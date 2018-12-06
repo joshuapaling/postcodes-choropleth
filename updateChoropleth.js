@@ -1,4 +1,6 @@
-const updateChoropleth = (datafile) => {
+const updateChoropleth = (datafile, title) => {
+  d3.select('.main-heading').text(title)
+
   fetch(datafile)
     .then(function(response) {
       return response.json();
