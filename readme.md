@@ -18,3 +18,19 @@ geo2svg -w 960 -h 960 < postcodes.json > postcodes.svg
 To save a bunch of file size and make rendering way quicker, you can simplify it at https://mapshaper.org/
 
 run with `http-server`
+
+Way how we build data
+===
+All queries stores in the data folder with extension .sql
+Queries executed against prod reporting DB.
+The results of the query stores in the same place in CSV format.
+
+Structure is:
+
+```
+"postcode","value"
+"-",1
+"0231",1
+"0800",1
+"0810",11
+```
