@@ -1,0 +1,12 @@
+{
+  "name": "postcodes-choropleth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Joshua Paling <joshua.paling@gmail.com> (http://joshuapaling.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "d3-geo-projection": "2.4.1",
+    "http-server": "0.11.1",
+    "shapefile": "0.6.6"
+  }
+}
