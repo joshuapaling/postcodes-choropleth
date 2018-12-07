@@ -1,1 +1,1 @@
-updateChoropleth('/users-per-postcode.json', 'Where all users live')
+updateChoropleth('/members-per-postcode.csv', 'Where all users live')

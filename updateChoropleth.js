@@ -3,9 +3,18 @@ const updateChoropleth = (datafile, title) => {
 
   fetch(datafile)
     .then(function(response) {
-      return response.json();
+      return response.text();
     })
-    .then(function(data) {
+    .then(function(csvDataAsText) {
+      return d3.csv.parse(csvDataAsText)
+    })
+    .then(function(csvData) {
+
+      const data = {}
+      csvData.forEach(row => {
+        data[row.postcode] = parseInt(row.value)
+      })
+
       var width = 960,
           height = 900,
           centered;
