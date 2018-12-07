@@ -84,21 +84,16 @@ const updateChoropleth = (datafile, title, postcodes = []) => {
         .attr('x', height - 300)
         .attr('y', width - 100);
 
-      // Load map data
-      d3.json('postcodes.json', function(error, mapData) {
-        var features = mapData.features;
-
-        // Draw each province as a path
-        mapLayer.selectAll('path')
-            .data(features)
-          .enter().append('path')
-            .attr('d', path)
-            .attr('vector-effect', 'non-scaling-stroke')
-            .style('fill', fillFn)
-            .on('mouseover', mouseover)
-            .on('mouseout', mouseout)
-            .on('click', clicked);
-      });
+      // Draw each province as a path
+      mapLayer.selectAll('path')
+          .data(window.features)
+        .enter().append('path')
+          .attr('d', path)
+          .attr('vector-effect', 'non-scaling-stroke')
+          .style('fill', fillFn)
+          .on('mouseover', mouseover)
+          .on('mouseout', mouseout)
+          .on('click', clicked);
 
       function postcode(d){
         var n = d.properties.POA_CODE
