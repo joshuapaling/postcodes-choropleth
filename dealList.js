@@ -5,30 +5,39 @@ const diningLessThanTenDollarsFiles = [
     'data/Dinning/dinning_less_10_dollars/poke-bros-parramatta-large-poke-bowl-bottle-water--0060I00000Y4af7QAB'
 ]
 
-function readTextFile(file, callback) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
+function readTextFile(file) {
+    return new Promise(function(resolve) {
+        var rawFile = new XMLHttpRequest();
+        rawFile.overrideMimeType("application/json");
+        rawFile.open("GET", file, true);
+        rawFile.onreadystatechange = function() {
+            if (rawFile.readyState === 4 && rawFile.status == "200") {
+                resolve(rawFile.responseText);
+            }
         }
-    }
-    rawFile.send(null);
+        rawFile.send(null);
+    })
 }
 
+function updateData() {
+    let data = []
+    for (let pathName of diningLessThanTenDollarsFiles) {
+        const file = pathName + '/response.json'
+        readTextFile(file)
+            .then(function(text) {
+                data.push(JSON.parse(text))
 
-const updateDealList = () => {
+            })
+            .catch(function(err) {
+                console.log('Error: ', err)
+            })
+        }
+}
+
+const updateDealList = async () => {
     const dealLinksDiv = document.querySelector(".check");
     const ul = document.createElement("ul");
     dealLinksDiv.appendChild(ul);
-    let data=[]
-
-    for (let pathName of diningLessThanTenDollarsFiles) {
-        const file = pathName + '/response.json'
-        readTextFile(file, function(text){
-            data.push(JSON.parse(text));
-        });
-    }
+    updateData()
 
 }
