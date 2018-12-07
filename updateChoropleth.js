@@ -10,6 +10,25 @@ const updateChoropleth = (datafile, title) => {
     })
     .then(function(csvData) {
 
+      csvData = csvData.filter(row => {
+        // Remove some postcodes that have too much data that's not accurate
+        // eg. lots of users have 2000 (Sydney CBD) as postcode because that's
+        // the default for Sydney users who didn't specify or something
+        if (row.postcode === '') return false
+        if (row.postcode === '2000') return false
+        if (row.postcode === '3000') return false
+        if (row.postcode === '6000') return false
+        if (row.postcode === '4000') return false
+        if (row.postcode === '5000') return false
+        if (row.postcode === '400013') return false
+        return true
+      })
+
+      const maxValue = _.maxBy(csvData, r => parseInt(r.value)).value
+      console.log('maxValue is: ', maxValue)
+      csvData = _.sortBy(csvData, [function(r) { return r.value; }])
+      // console.log('csvData', csvData)
+
       const data = {}
       csvData.forEach(row => {
         data[row.postcode] = parseInt(row.value)
@@ -21,7 +40,7 @@ const updateChoropleth = (datafile, title) => {
 
       // Define color scale
       var color = d3.scale.linear()
-        .domain([1, 10000])
+        .domain([1, maxValue])
         .clamp(true)
         .range(['#fff', '#409A99']);
 
