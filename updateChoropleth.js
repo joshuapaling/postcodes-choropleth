@@ -18,6 +18,7 @@ const updateChoropleth = (datafile, title, postcodes = []) => {
         // eg. lots of users have 2000 (Sydney CBD) as postcode because that's
         // the default for Sydney users who didn't specify or something
         if (row.postcode === '') return false
+        if (row.postcode === '1010') return false
         if (row.postcode === '2000') return false
         if (row.postcode === '3000') return false
         if (row.postcode === '6000') return false
