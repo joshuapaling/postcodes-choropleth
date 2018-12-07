@@ -9,11 +9,10 @@
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script src="/updateChoropleth.js"></script>
+  <script src="/dealList.js"></script>
 </head>
   <body>
     <h1 class="main-heading">Where all users live</h1>
-    <h2>postcodes <span class="postcodes-heading"></span></h2>
-    <button onclick="window.showPostcodes = !window.showPostcodes; alert(`postcodes is: ${window.showPostcodes}`)">Toggle Postcodes</button>
     <div class="wrapper">
       <div class="left-side">
         <svg><!-- javascript will put stuff here --></svg>
@@ -21,10 +20,33 @@
       <div class="right-side">
         <a onclick="updateChoropleth('/members-per-postcode.csv', 'Where all users live')">Where all users live</a>
         <br />
-        <a onclick="updateChoropleth('/data/Dinning/dinning_less_10_dollars/acai-brothers-manly-bowls-healthy--0060I00000Y2nZQQAZ/data.csv', 'Manly Acai Bowl', ['2096'])">Manly Acai Bowl</a>
+        <h4>Deals Less Than 10 Dollars</h4>
+        <a onclick="updateChoropleth('/data/Dinning/dinning_less_10_dollars/acai-brothers-manly-bowls-healthy--0060I00000Y2nZQQAZ/data.csv', 'Manly Acai Bowl')">Manly Acai Bowl</a>
         <br />
-        <a onclick="updateChoropleth('/data/Dinning/dinning_less_10_dollars/cafe-with-specialty-coffee-0060I00000Y1zLiQAJ/data.csv', 'Neutral Bay Cafe')">Neutral Bay Cafe</a>
+        <a onclick="updateChoropleth('/data/Dinning/dinning_less_10_dollars/charlie-rabbit-breakfast-lunch-dessert-drinks--0060I00000Y25AuQAJ/data.csv', 'Charlie Rabbit CBD')">Charlie Rabbit CBD</a>
+        <br />
+        <a onclick="updateChoropleth('/data/Dinning/dinning_less_10_dollars/five-stars-thaitanic-sydney-thai-lunch-dinner-bottle-water--0060I00000X99OqQAJ/data.csv', 'Five Stars Thaitanic')">Five Stars Thaitanic Multiple Locations</a>
+        <ul>
+          <li>Jordan Springs</li>
+          <li>Ingleburn</li>
+          <li>Casula</li>
+          <li>Chester Hill</li>
+        </ul>
+        <br />
+        <a onclick="updateChoropleth('/data/Dinning/dinning_less_10_dollars/poke-bros-parramatta-large-poke-bowl-bottle-water--0060I00000Y4af7QAB/data.csv', 'Poke Bowl Parramatta')">Poke Bowl Parramatta</a>
+        <br/>
+        <br/>
+        <h4>Deals More Than 69 Dollars</h4>
+        <a onclick="updateChoropleth('/data/Dinning/dinning_more_69_dollars/aquarius-seafood-restaurant-seafood-platter-wine--0060I00000RAJWdQAP/data.csv', 'Aquarius Seafood Restaurant')">Aquarius Seafood Restaurant Georges Hall</a>
+        <br />
+        <a onclick="updateChoropleth('/data/Dinning/dinning_more_69_dollars/baygarden-restaurant-novotel-brighton-le-sands-all-you-can-eat-seafood-buffet--0060I00000WKPBAQA5/data.csv', 'Baygarden Restaurant Brighton-Le-Sands')">Baygarden Restaurant Brighton-Le-Sands</a>
+        <br />
+        <a onclick="updateChoropleth('/data/Dinning/dinning_more_69_dollars/feast-restaurant-sheraton-on-the-park-sydney-all-you-can-eat-seafood-buffet--0060I00000Y2N7NQAV/data.csv', 'Feast Restaurant @ Sheraton on the Park')">Feast Restaurant @ Sheraton on the Park CBD</a>
+        <br />
+        <a onclick="updateChoropleth('/data/Dinning/dinning_more_69_dollars/sailmaker-hyatt-regency-sydney-seafood-feast-wine-darling-harbour-views--0060I00000Y59HVQAZ/data.csv', 'Sailmaker at the Hyatt Regency Sydney')">Sailmaker at the Hyatt Regency Sydney CBD</a>
       </div>
+      <!-- Delete this check div. Used for Deal List -->
+      <div class="check"></div>
     </div>
     <script src="/index.js"></script>
   </body>

@@ -29,7 +29,7 @@ echo ""
 echo "Use the shape file and generate detailed-postcodes.json"
 echo "----------------------------------------------"
 echo ""
-./node_modules/shapefile/bin/shp2json 1270055003_poa_2011_aust_shape/POA_2011_AUST.shp -o detailed-postcodes.json
+./node_modules/shapefile/bin/shp2json 1270055003_poa_2011_aust_shape/POA_2011_AUST.shp -o postcodes-detailed.json
 if [ $? -ne 0 ]; then
     echo "ERROR: Failed to generate postcodes.json"
     exit 1
