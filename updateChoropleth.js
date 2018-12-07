@@ -106,6 +106,7 @@ const updateChoropleth = (datafile, title) => {
       function fillFn(d){
         var code = postcode(d)
         if (!data[code]) return '#fbf3f3';
+        if (data[code] == 1) return '#ffccff';
         return color(data[code]);
       }
 
