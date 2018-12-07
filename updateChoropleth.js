@@ -1,5 +1,8 @@
-const updateChoropleth = (datafile, title) => {
+const updateChoropleth = (datafile, title, postcodes = []) => {
   d3.select('.main-heading').text(title)
+  d3.select('.postcodes-heading').text(postcodes.join(', '))
+
+  fetch(datafile)
 
   fetch(datafile)
     .then(function(response) {
@@ -105,6 +108,7 @@ const updateChoropleth = (datafile, title) => {
       // Get province color
       function fillFn(d){
         var code = postcode(d)
+        if (window.showPostcodes && postcodes.includes('' + code)) return 'yellow'
         if (!data[code]) return '#fbf3f3';
         if (data[code] == 1) return '#ffccff';
         return color(data[code]);

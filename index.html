@@ -12,6 +12,8 @@
 </head>
   <body>
     <h1 class="main-heading">Where all users live</h1>
+    <h2>postcodes <span class="postcodes-heading"></span></h2>
+    <button onclick="window.showPostcodes = !window.showPostcodes; alert(`postcodes is: ${window.showPostcodes}`)">Toggle Postcodes</button>
     <div class="wrapper">
       <div class="left-side">
         <svg><!-- javascript will put stuff here --></svg>
@@ -19,7 +21,7 @@
       <div class="right-side">
         <a onclick="updateChoropleth('/members-per-postcode.csv', 'Where all users live')">Where all users live</a>
         <br />
-        <a onclick="updateChoropleth('/data/Dinning/dinning_less_10_dollars/acai-brothers-manly-bowls-healthy--0060I00000Y2nZQQAZ/data.csv', 'Manly Acai Bowl')">Manly Acai Bowl</a>
+        <a onclick="updateChoropleth('/data/Dinning/dinning_less_10_dollars/acai-brothers-manly-bowls-healthy--0060I00000Y2nZQQAZ/data.csv', 'Manly Acai Bowl', ['2096'])">Manly Acai Bowl</a>
         <br />
         <a onclick="updateChoropleth('/data/Dinning/dinning_less_10_dollars/cafe-with-specialty-coffee-0060I00000Y1zLiQAJ/data.csv', 'Neutral Bay Cafe')">Neutral Bay Cafe</a>
       </div>
