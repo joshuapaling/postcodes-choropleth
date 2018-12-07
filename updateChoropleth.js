@@ -42,7 +42,7 @@ const updateChoropleth = (datafile, title) => {
       var color = d3.scale.linear()
         .domain([1, maxValue])
         .clamp(true)
-        .range(['#fff', '#409A99']);
+        .range(['#b3ffb3', '#003300']);
 
       var sydney = [151.2093, -33.8688]
       var melbourne = [144.9631, -37.8136]
@@ -105,6 +105,7 @@ const updateChoropleth = (datafile, title) => {
       // Get province color
       function fillFn(d){
         var code = postcode(d)
+        if (!data[code]) return '#fbf3f3';
         return color(data[code]);
       }
 
